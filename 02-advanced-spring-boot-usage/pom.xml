@@ -12,8 +12,10 @@
 
     <artifactId>02-advanced-spring-boot-usage</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-    <dependencies>
-
-    </dependencies>
+    <modules>
+        <module>publisher-with-advanced-config</module>
+        <module>subscriber-with-advanced-config</module>
+    </modules>
 </project>
