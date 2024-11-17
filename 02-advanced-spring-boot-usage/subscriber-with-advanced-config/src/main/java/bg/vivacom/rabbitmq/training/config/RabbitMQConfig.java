@@ -1,5 +1,6 @@
 package bg.vivacom.rabbitmq.training.config;
 
+import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.connection.PooledChannelConnectionFactory;
@@ -44,6 +45,9 @@ public class RabbitMQConfig {
         factory.setMessageConverter(jsonMessageConverter());
         factory.setConcurrentConsumers(3);
         factory.setMaxConcurrentConsumers(10);
+        factory.setAcknowledgeMode(AcknowledgeMode.AUTO); //Enables automatic message acknowledgment
+        factory.setDefaultRequeueRejected(false); //Prevents failed messages from being requeued indefinitely
+        factory.setPrefetchCount(10); // Sets how many messages can be prefetched per consumer
         return factory;
     }
 }
