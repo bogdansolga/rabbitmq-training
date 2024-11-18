@@ -14,12 +14,12 @@ import org.springframework.retry.support.RetryTemplate;
 public class RabbitMQConfig {
 
     @Bean
-    public Queue firstQueue() {
+    public Queue productsQueue() {
         return new Queue("products-queue", true);
     }
 
     @Bean
-    public Exchange firstExchange() {
+    public Exchange productsExchange() {
         return new DirectExchange("products-exchange");
     }
 

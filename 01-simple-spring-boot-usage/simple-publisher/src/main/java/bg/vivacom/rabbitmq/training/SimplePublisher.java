@@ -14,6 +14,7 @@ public class SimplePublisher {
 	public static void main(String[] args) {
 		SpringApplication springApplication = new SpringApplication(SimplePublisher.class);
 		springApplication.setWebApplicationType(WebApplicationType.NONE);
+		springApplication.setBannerMode(Banner.Mode.OFF);
 		springApplication.run(args);
 	}
 

@@ -11,4 +11,10 @@ public class SimpleMessageConsumer {
     public void handleDomainModelMessage(Product product) {
         System.out.println("Received the product '" + product + "'");
     }
+
+    @RabbitListener(queues = "products-queue")
+    public String handleDomainModelMessageAndReturnResponse(Product product) {
+        System.out.println("Received the product '" + product + "'");
+        return "The product with the ID " + product.id() + " was processed successfully";
+    }
 }

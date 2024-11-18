@@ -25,7 +25,7 @@ public class RabbitMQConfig {
     @Bean
     public ConnectionFactory connectionFactory() {
         com.rabbitmq.client.ConnectionFactory factory = new com.rabbitmq.client.ConnectionFactory();
-        factory.setConnectionTimeout(300);
+        factory.setConnectionTimeout(3000); // 3 seconds, in millis
         factory.setHost(host);
         factory.setUsername(userName);
         factory.setPassword(password);
@@ -46,7 +46,7 @@ public class RabbitMQConfig {
         factory.setConcurrentConsumers(3);
         factory.setMaxConcurrentConsumers(10);
         factory.setAcknowledgeMode(AcknowledgeMode.AUTO); //Enables automatic message acknowledgment
-        factory.setDefaultRequeueRejected(false); //Prevents failed messages from being requeued indefinitely
+        factory.setDefaultRequeueRejected(false); //Prevents failed messages from being re-queued indefinitely
         factory.setPrefetchCount(10); // Sets how many messages can be prefetched per consumer
         return factory;
     }
