@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="[06] Modular DeadLetter config" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <envs>
+      <env name="RABBITMQ_HOST" value="ubuntu-vm" />
+    </envs>
+    <module name="modular-dead-letter-config" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="bg.vivacom.rabbitmq.training.ModularDeadLetterConfig" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
