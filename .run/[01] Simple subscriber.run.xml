@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="[02] Simple subscriber" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+  <configuration default="false" name="[01] Simple subscriber" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <envs>
       <env name="RABBITMQ_HOST" value="ubuntu-vm" />
     </envs>
