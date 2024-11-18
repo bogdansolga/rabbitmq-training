@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="[02] Simple subscriber" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <envs>
+      <env name="RABBITMQ_HOST" value="ubuntu-vm" />
+    </envs>
+    <module name="simple-subscriber" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="bg.vivacom.rabbitmq.training.SimpleSubscriber" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
