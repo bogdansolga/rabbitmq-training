@@ -37,6 +37,7 @@ public class RabbitMQConfig {
         template.setMessageConverter(new Jackson2JsonMessageConverter());
         template.setReplyTimeout(60000);  // 60 seconds
         template.setRetryTemplate(retryTemplate());  // Custom retry logic
+        template.setReceiveTimeout(3000); // 3 seconds
         return template;
     }
 
