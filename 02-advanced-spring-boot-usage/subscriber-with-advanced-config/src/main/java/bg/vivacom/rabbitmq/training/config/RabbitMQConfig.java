@@ -1,6 +1,11 @@
 package bg.vivacom.rabbitmq.training.config;
 
 import org.springframework.amqp.core.AcknowledgeMode;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Exchange;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.AsyncRabbitTemplate;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -23,6 +28,24 @@ public class RabbitMQConfig {
 
     @Value("${spring.rabbitmq.password}")
     private String password;
+
+    @Bean
+    public Queue productsQueue() {
+        return new Queue("products-queue", true);
+    }
+
+    @Bean
+    public Exchange productsExchange() {
+        return new DirectExchange("products-exchange");
+    }
+
+    @Bean
+    public Binding binding(Queue queue, Exchange exchange) {
+        return BindingBuilder.bind(queue)
+                             .to(exchange)
+                             .with("products-routing-key")
+                             .noargs();
+    }
 
     @Bean
     public ConnectionFactory connectionFactory() {
@@ -54,9 +77,9 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, MessageConverter messageConverter) {
         RabbitTemplate template = new RabbitTemplate(connectionFactory);
-        template.setMessageConverter(new Jackson2JsonMessageConverter());
+        template.setMessageConverter(messageConverter);
         template.setReplyTimeout(60000);  // 60 seconds
         template.setReceiveTimeout(3000); // 3 seconds
         return template;
