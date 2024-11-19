@@ -36,7 +36,7 @@ spring:
       platform: h2
 
   rabbitmq:
-    host: ${RABBITMQ_HOST}
+    host: ${RABBITMQ_HOST:localhost}
     port: 5672
     username: admin
     password: passw0rd
