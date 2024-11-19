@@ -19,5 +19,6 @@
         <module>subscriber-with-advanced-config</module>
         <module>dead-letter-exchange-config</module>
         <module>modular-dead-letter-config</module>
+        <module>messages-acknowledgements</module>
     </modules>
 </project>
