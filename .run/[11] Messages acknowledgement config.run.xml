@@ -1,8 +1,5 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="[11] Messages acknowledgement config" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <envs>
-      <env name="RABBITMQ_HOST" value="ubuntu-vm" />
-    </envs>
     <module name="messages-acknowledgements" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="bg.vivacom.rabbitmq.training.MessagesAcknowledgementConfig" />
     <extension name="coverage">

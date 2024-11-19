@@ -1,8 +1,5 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="[08] Fanout exchange" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <envs>
-      <env name="RABBITMQ_HOST" value="ubuntu-vm" />
-    </envs>
     <module name="02-fanout-exchange" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="bg.vivacom.rabbitmq.training.FanoutExchange" />
     <method v="2">

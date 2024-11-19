@@ -1,8 +1,5 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="[02] Simple publisher" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <envs>
-      <env name="RABBITMQ_HOST" value="ubuntu-vm" />
-    </envs>
     <module name="simple-publisher" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="bg.vivacom.rabbitmq.training.SimplePublisher" />
     <extension name="coverage">

@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="[05] DeadLetter exchange config" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <module name="dead-letter-exchange-config" />
+    <module name="messages-acknowledgements" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="bg.vivacom.rabbitmq.training.MessagesAcknowledgementConfig" />
     <method v="2">
       <option name="Make" enabled="true" />

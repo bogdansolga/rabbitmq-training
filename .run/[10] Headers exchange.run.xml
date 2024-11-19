@@ -1,8 +1,5 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="[10] Headers exchange" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <envs>
-      <env name="RABBITMQ_HOST" value="ubuntu-vm" />
-    </envs>
     <module name="04-headers-exchange" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="bg.vivacom.rabbitmq.training.HeadersExchange" />
     <method v="2">
