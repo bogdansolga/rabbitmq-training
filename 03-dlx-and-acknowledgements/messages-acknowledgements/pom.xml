@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>bg.vivacom</groupId>
-        <artifactId>02-advanced-spring-boot-usage</artifactId>
+        <artifactId>03-dlx-and-acknowledgements</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 

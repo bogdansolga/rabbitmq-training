@@ -6,17 +6,18 @@
 
     <parent>
         <groupId>bg.vivacom</groupId>
-        <artifactId>03-exchange-types</artifactId>
+        <artifactId>rabbitmq.training</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>01-direct-exchange</artifactId>
+    <artifactId>04-exchange-types</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>01-direct-exchange</module>
+        <module>02-fanout-exchange</module>
+        <module>03-topic-exchange</module>
+        <module>04-headers-exchange</module>
+    </modules>
 </project>

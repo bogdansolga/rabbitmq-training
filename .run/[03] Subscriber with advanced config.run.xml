@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="[03] Subscriber with advanced config" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="subscriber-with-advanced-config" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="bg.vivacom.rabbitmq.training.SubscriberWithAdvancedConfig" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

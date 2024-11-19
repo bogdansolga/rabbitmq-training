@@ -6,14 +6,17 @@
 
     <parent>
         <groupId>bg.vivacom</groupId>
-        <artifactId>rabbitmq.training</artifactId>
+        <artifactId>04-exchange-types</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>04-spring-cloud-stream</artifactId>
+    <artifactId>01-direct-exchange</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
     </dependencies>
 </project>

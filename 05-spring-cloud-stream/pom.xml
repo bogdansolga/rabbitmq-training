@@ -10,12 +10,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>02-advanced-spring-boot-usage</artifactId>
+    <artifactId>05-spring-cloud-stream</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
 
-    <modules>
-        <module>publisher-with-advanced-config</module>
-        <module>subscriber-with-advanced-config</module>
-    </modules>
+    <dependencies>
+
+    </dependencies>
 </project>

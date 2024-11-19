@@ -29,8 +29,9 @@
 	<modules>
 		<module>01-simple-spring-boot-usage</module>
 		<module>02-advanced-spring-boot-usage</module>
-		<module>03-exchange-types</module>
-		<module>04-spring-cloud-stream</module>
+		<module>03-dlx-and-acknowledgements</module>
+		<module>04-exchange-types</module>
+		<module>05-spring-cloud-stream</module>
 	</modules>
 
 	<dependencyManagement>
