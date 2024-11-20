@@ -44,19 +44,18 @@ public class IdempotentConsumer {
     public void consume(Message message,
                         Channel channel,
                         @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag,
-                        @Header(AmqpHeaders.MESSAGE_ID) String messageId) throws IOException {
+                        @Header(AmqpHeaders.MESSAGE_ID) String messageId) {
 
         try {
             // Check if message was already processed
             if (processedMessageIds.add(messageId)) {
                 processMessage(message);
-                acknowledgeMessage(channel, deliveryTag);
                 LOGGER.info("Successfully processed and acknowledged message: {}", messageId);
             } else {
                 // Message already processed, just acknowledge
-                acknowledgeMessage(channel, deliveryTag);
                 LOGGER.info("Message {} already processed, acknowledged duplicate", messageId);
             }
+            acknowledgeMessage(channel, deliveryTag);
         } catch (Exception e) {
             handleProcessingError(channel, deliveryTag, messageId, e);
         }

@@ -26,12 +26,12 @@ public class PublisherWithAdvancedConfig {
 	@Bean
 	public ApplicationRunner runner(RabbitTemplate rabbitTemplate) {
 		return args -> {
-			final String exchangeName = "products-exchange";
+			final String exchangeName = "products.exchange";
 			final String routingKey = "products-routing-key";
 
 			// send without receiving a response - fire & forget
 			rabbitTemplate.convertAndSend(exchangeName, routingKey, new Product(100, "Tablet", 250));
-			System.out.println("Successfully sent a message on the 'products-exchange' exchange");
+			System.out.println("Successfully sent a message on the 'products.exchange' exchange");
 
 			// send a message with a correlation ID, receive a confirmation
 			CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());

@@ -1,15 +1,19 @@
 package bg.vivacom.rabbitmq.training.config;
 
 import org.springframework.amqp.core.AcknowledgeMode;
+import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.amqp.rabbit.AsyncRabbitTemplate;
+import org.springframework.amqp.rabbit.batch.SimpleBatchingStrategy;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.connection.PooledChannelConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
@@ -31,12 +35,15 @@ public class RabbitMQConfig {
 
     @Bean
     public Queue productsQueue() {
-        return new Queue("products-queue", true);
+        if (true) return QueueBuilder.durable("products.queue")
+                                     .withArgument("x-max-length", 1000)
+                                     .build();
+        return new Queue("products.queue", true);
     }
 
     @Bean
     public Exchange productsExchange() {
-        return new DirectExchange("products-exchange");
+        return new DirectExchange("products.exchange");
     }
 
     @Bean
@@ -70,9 +77,17 @@ public class RabbitMQConfig {
         factory.setMessageConverter(jsonMessageConverter());
         factory.setConcurrentConsumers(3);
         factory.setMaxConcurrentConsumers(10);
+
+        factory.setBatchSize(20);
+        factory.setBatchingStrategy(new SimpleBatchingStrategy(20, 100, 1000));
+
         factory.setAcknowledgeMode(AcknowledgeMode.AUTO); //Enables automatic message acknowledgment
         factory.setDefaultRequeueRejected(false); //Prevents failed messages from being re-queued indefinitely
         factory.setPrefetchCount(10); // Sets how many messages can be prefetched per consumer
+        factory.setErrorHandler(error -> {
+            error.printStackTrace();
+            //TODO implement the error handling for that message
+        });
         return factory;
     }
 
@@ -88,5 +103,10 @@ public class RabbitMQConfig {
     @Bean
     public AsyncRabbitTemplate asyncRabbitTemplate(RabbitTemplate rabbitTemplate) {
         return new AsyncRabbitTemplate(rabbitTemplate);
+    }
+
+    @Bean
+    public AmqpAdmin amqpAdmin(RabbitTemplate rabbitTemplate) {
+        return new RabbitAdmin(rabbitTemplate);
     }
 }

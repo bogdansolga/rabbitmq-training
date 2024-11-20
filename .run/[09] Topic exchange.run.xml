@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="[09] Topic exchange" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <module name="04-headers-exchange" />
-    <option name="SPRING_BOOT_MAIN_CLASS" value="bg.vivacom.rabbitmq.training.HeadersExchange" />
+    <module name="03-topic-exchange" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="bg.vivacom.rabbitmq.training.TopicExchange" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

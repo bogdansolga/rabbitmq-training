@@ -17,7 +17,6 @@ public class MessagesAcknowledgementConfig {
 		springApplication.run(args);
 	}
 
-
 	@Bean
 	public ApplicationRunner runner(RabbitTemplate rabbitTemplate) {
 		return args -> {

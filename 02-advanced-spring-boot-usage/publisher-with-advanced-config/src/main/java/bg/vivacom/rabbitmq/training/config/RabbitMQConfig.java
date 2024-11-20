@@ -15,12 +15,12 @@ public class RabbitMQConfig {
 
     @Bean
     public Queue productsQueue() {
-        return new Queue("products-queue", true);
+        return new Queue("products.queue", true);
     }
 
     @Bean
     public Exchange productsExchange() {
-        return new DirectExchange("products-exchange");
+        return new DirectExchange("products.exchange");
     }
 
     @Bean
@@ -36,15 +36,31 @@ public class RabbitMQConfig {
         RabbitTemplate template = new RabbitTemplate(connectionFactory);
         template.setMessageConverter(new Jackson2JsonMessageConverter());
         template.setReplyTimeout(60000);  // 60 seconds
-        template.setRetryTemplate(retryTemplate());  // Custom retry logic
         template.setReceiveTimeout(3000); // 3 seconds
+        template.setRetryTemplate(retryTemplate());  // Custom retry logic
+        template.setConfirmCallback(((correlationData, ack, cause) -> {
+            System.out.println("The cause: " + cause);
+            if (!ack) {
+                //TODO implement reprocessing logic
+            }
+        }));
+        template.setReturnsCallback(returnCallback -> {
+            System.out.println("Got the message " + returnCallback.getMessage());
+            System.out.println("The exchange: " + returnCallback.getExchange());
+        });
         return template;
     }
 
     private RetryTemplate retryTemplate() {
         RetryTemplate retryTemplate = new RetryTemplate();
         retryTemplate.setRetryPolicy(new CircuitBreakerRetryPolicy());
-        retryTemplate.setBackOffPolicy(new ExponentialBackOffPolicy());
+
+        final ExponentialBackOffPolicy backOffPolicy = new ExponentialBackOffPolicy();
+        backOffPolicy.setInitialInterval(200);
+        backOffPolicy.setMultiplier(1.1);
+        backOffPolicy.setMaxInterval(2000);
+        retryTemplate.setBackOffPolicy(backOffPolicy);
+
         return retryTemplate;
     }
 }
